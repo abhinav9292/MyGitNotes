@@ -1,0 +1,306 @@
+<html xmlns:border-radius="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Car Rentals</title>
+    <link rel="stylesheet" type="text/css" href="order.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+</head>
+
+<body >
+
+<header>
+ <a href="index.html">Home</a>
+ <a href="order.html" target="">Order a Car</a>
+</header>
+
+<div>
+
+    <table id="carTable">
+        <th>Car</th>
+        <th>Charge</th>
+        <tr>
+            <td>Compact</td>
+            <td>$29.99</td>
+
+        </tr>
+        <tr>
+            <td>Medium</td>
+            <td>$39.99</td>
+        <tr>
+            <td>Luxury</td>
+            <td>$49.99</td>
+        </tr>
+
+    </table><br>
+    <div class="car" id="numDays">
+
+        Enter the number of days : <input type="text" id="enterDays">
+        <p>15 days -> 10% off</p>
+        <br/>
+        <p>30 days or more -> 20%</p>
+
+    </div><br>
+    Select your Car:<br>Compact<br>
+    <input type="radio" class="car" name="rentalCar" value="comp1" onchange="total()" id="car1" onc>Toyota Corolla
+    <input type="radio" class="car" name="rentalCar" value="comp2" onchange="total()"  id="car2">Honda Accord
+    <input type="radio" class="car" name="rentalCar" value="comp3" onchange="total()"  id="car3">Mitsubushi Lancer<br>
+
+    Medium<br>
+    <input type="radio" class="car" name="rentalCar"  value="med1" onchange="total()"  id="car4">Mercedes C
+    <input type="radio" class="car" name="rentalCar" value="med2" onchange="total()"  id="car5">BMW 325i
+    <input type="radio" class="car" name="rentalCar" value="med3" onchange="total()"  id="car6">Audi Q5<br>
+
+    Luxury<br>
+    <input type="radio" class="car" name="rentalCar" value="lux1" onchange="total()"  id="car7">Rolls Royce Phantom
+    <input type="radio" class="car" name="rentalCar" value="lux2" onchange="total()"  id="car8">Mayback
+    <input type="radio" class="car" name="rentalCar" value="lux3" onchange="total()"  id="car9">Chevy Caamro<br>
+    <h3>Optional Services</h3>
+    Do you want a car wash for just 50$ on whole trip?
+    <input type="radio" class="car" value="rental"   id="rental" disabled>Car Wash daily<br>
+    Do you wish to have a petrol card?
+    <input type="radio" class="car" value="petrol"   id="petrol" disabled>Car Wash daily<br>
+
+    Select Your City<br>
+
+
+    <table id="cityTable">
+        <th>City/Car</th>
+        <th>Surcharge</th>
+        <tr>
+            <td>San Fransisco</td>
+            <td>15%</td>
+
+        </tr>
+        <tr>
+            <td>Los Angeles</td>
+            <td>15%</td>
+        <tr>
+            <td>Luxury</td>
+            <td>10%</td>
+        </tr>
+
+    </table>
+    <input type="radio" class="car" value="comp1" name="city" onchange="total()"  id="city1">San Fransisco
+    <input type="radio" class="car" value="comp2" name="city" onchange="total()"  id="city2">Los Angeles
+    <input type="radio" class="car" value="comp3" name="city" onchange="total()"  id="lux1">Luxury<br>
+
+
+    Trip Calendar:
+    <div class="car" id="days">
+        Start Date : <input type="date" id="startDate" min="2016-10-01" max="2017-10-20"></br>
+        Stop Date : <input type="date" id="stopDate" min="2016-10-02" max="2017-10-20"></br>
+        Number of days you have entered <input type="text" >
+    </div>
+    <br>
+
+    <div id="imgShow">
+
+
+
+    </div>
+
+    <div id="subBox">
+        <div id="subDiv">
+            <!--<button type="submit" id="subButton" value="subButton" name="submitButton" onclick="myTotal()" style="color: red; position: absolute; border-radius:100%; background-color: blue; margin: 0 auto "> Submit</button>-->
+           <p id="pSub" style="margin-left: auto;margin-top: 60px  ">Submit</p>
+        </div>
+        <div id="subShadow">
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <div id="total_price">
+        <table>
+            <tr> <td>Car Cost:</td> <td id="carCost" style="width: 80px;background-color: darkturquoise;color: black"> </td></tr>
+            <tr> <td> Insurance Cost: </td> <td id="insCost" style="width: 80px;background-color: darkturquoise;color: black"> </td></tr>
+            <tr> <td> Rental: </td> <td id="rentCost" style="width: 80px;background-color: darkturquoise;color: black">  </td></tr>
+            <tr> <td> Petrol Card:</td> <td id="petrolCost" style="width: 80px;background-color: darkturquoise;color: black"> </td></tr>
+            <tr> <td> Surcharge: </td> <td id="areaCost" style="width: 80px;background-color: darkturquoise;color: black">  </td></tr>
+            <tr> <td> Days Discount: </td> <td id="dayDiscount" style="width: 80px;background-color: darkturquoise;color: black">  </td></tr>
+            <tr> <td> Total:</td> <td id="totalCost" style="width: 80px;background-color: darkturquoise;color: black"> </td></tr>
+
+
+        </table>
+
+    </div>
+
+
+
+</div>
+
+
+
+
+</body>
+
+
+
+<script type="text/javascript">
+
+    function total()
+    {
+
+        if (document.getElementById("car1").checked)
+        {
+            document.getElementById('imgShow').innerHTML="<img src='images/toyota_corolla.jpg'>";
+        }
+
+        else if (document.getElementById("car2").checked)
+        {
+            document.getElementById('imgShow').innerHTML="<img src='images/honda_accord.jpg' class='imgDiv' >";
+        }
+
+        else if (document.getElementById("car3").checked)
+        {
+            document.getElementById('imgShow').innerHTML="<img src='images/mitsubushi_lancer.jpg'>";
+        }
+
+        else if (document.getElementById("car4").checked)
+        {
+            document.getElementById('imgShow').innerHTML="<img src='images/mercedes_c.jpg'>";
+        }
+
+        else if (document.getElementById("car5").checked)
+        {
+            document.getElementById('imgShow').innerHTML="<img src='images/bmw_325i.jpg'>";
+        }
+
+        else if (document.getElementById("car6").checked)
+        {
+            document.getElementById('imgShow').innerHTML="<img src='images/audi_q5.jpg'>";
+        }
+
+       else if (document.getElementById("car7").checked)
+        {
+            document.getElementById('imgShow').innerHTML="<img src='images/rr_phantom.jpg'class='imgDiv'  >";
+        }
+
+        else if (document.getElementById("car8").checked)
+        {
+            document.getElementById('imgShow').innerHTML="<img src='images/maybach.jpg'class='imgDiv' >";
+        }
+
+        else if (document.getElementById("car9").checked)
+        {
+            document.getElementById('imgShow').innerHTML="<img src='images/camaro2.jpg' class='imgDiv' >";
+        }
+
+
+
+       var numDays = document.getElementById("enterDays").value;
+        var rent=0;
+        var petrol=0;
+
+        {
+
+            if (document.getElementById("car1").checked || document.getElementById("car2").checked || document.getElementById("car3").checked)
+            {
+                var carcost = numDays * 29.99;
+//                document.getElementById("carCost").innerHTML = carcost.toFixed();
+                var   inscost=17*numDays;
+//                document.getElementById("insCost").innerHTML = inscost;
+                var citycost =  0.15*carcost;
+                var luxcost=0.1*carcost;
+
+
+            }// if compact car is selected
+
+           else if (document.getElementById("car4").checked || document.getElementById("car5").checked || document.getElementById("car6").checked)
+            {
+                var carcost = numDays * 39.99;
+//                document.getElementById("carCost").innerHTML = carcost.toFixed(2);
+                var   inscost=22*numDays;
+//                document.getElementById("insCost").innerHTML = inscost.toFixed(2);
+                var citycost =  0.15*carcost;
+                var luxcost=0.1*carcost;
+
+//                if(document.getElementById("city1").checked || document.getElementById("city2").checked )
+//                {
+//
+//                    document.getElementById("areaCost").innerHTML = citycost.toFixed(2);
+//                }
+//                else if(document.getElementById("lux1").checked )
+//                {
+//                    document.getElementById("areaCost").innerHTML = luxcost.toFixed(2);
+//                }
+
+
+            } // if medium car is selected
+
+           else if (document.getElementById("car7").checked || document.getElementById("car8").checked || document.getElementById("car9").checked)
+            {
+
+                var carcost  =  numDays * 49.99;
+                var  inscost =  28*numDays;
+                var citycost =  0.15*carcost;
+                var luxcost  =  0.1*carcost;
+
+
+                document.getElementById("rental").disabled= false;
+                if(document.getElementById("rental").checked)
+                {
+                     rent = 50;
+                }
+
+                document.getElementById("petrol").disabled= false;
+                if(document.getElementById("petrol").checked)
+                {
+                     petrol=100;
+                }
+            }
+        } // if luxury car is selected
+
+
+        document.getElementById("carCost").innerHTML = carcost.toFixed(2);
+        document.getElementById("insCost").innerHTML = inscost.toFixed(2);
+        document.getElementById("rentCost").innerHTML = "$"+ rent;
+        document.getElementById("petrolCost").innerHTML = "$"+ petrol;
+
+
+
+
+        if(document.getElementById("city1").checked || document.getElementById("city2").checked )
+        {
+
+            document.getElementById("areaCost").innerHTML = citycost.toFixed(2);
+        }
+        if(document.getElementById("lux1").checked )
+        {
+            document.getElementById("areaCost").innerHTML = luxcost.toFixed(2);
+        }
+
+       disCount=0;
+        if(numDays<15)
+        {
+           var disCount = 0;
+            document.getElementById("dayDiscount").innerHTML=0;
+        }
+        if(numDays>=15 && numDays<30)
+         {
+            var disCount=0.1*carcost;
+              document.getElementById("dayDiscount").innerHTML=disCount.toFixed(2);
+         }
+
+        if(numDays>=15 && numDays<30)
+        {
+            var disCount = 0.2*carcost;
+            document.getElementById("dayDiscount").innerHTML= disCount.toFixed(2);
+        }
+
+        function myTotal()
+        {
+            var total_cost= carcost+citycost+luxcost+inscost+rent+petrol-disCount;
+            document.getElementById("totalCost").innerHTML=total_cost;
+
+        }
+    }
+
+
+
+</script>

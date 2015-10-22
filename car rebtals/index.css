@@ -1,0 +1,69 @@
+header
+{
+    padding:10px;
+  color: red;
+  background-color: blue;
+  margin-top: 5px;
+}
+
+footer
+{
+    color: blue;
+    background-color: orange;
+    width: 100%;
+    height: 10px;
+    position: absolute;
+	bottom: 0px;
+}
+
+body
+{
+	/*background-image: url("images/home2.jpg"),url("images/home3.jpg"),url("images/home4.jpg"),url("images/home5.jpg");*/
+	/*background-repeat: no-repeat;*/
+    background-color: brown;
+    padding:10px;
+}
+
+div
+{
+    width: 100%;
+    height: 95%;
+    background-color: darkcyan;
+}
+a
+{
+    margin-right: 50px;
+    color: yellow;
+}
+
+#shirley
+{
+    -webkit-animation-name: break;
+    -webkit-animation: break 4s forwards;
+    -webkit-animation-iteration-count: 1;
+    animation-name: break;
+    animation: break 4s forwards;
+    animation-iteration-count: 1;
+    position: absolute;
+    
+    width: 100%;
+    left: -100px;
+    /*background-image: url("images/home2.jpg"),url("images/home3.jpg"),url("images/home4.jpg"),url("images/home5.jpg");*/
+
+}
+
+@-webkit-keyframes break {
+
+    100%
+    {
+       left: 0px;
+    }
+}
+
+@keyframes break {
+
+    100%
+    {
+        left: 0px;
+    }
+}
