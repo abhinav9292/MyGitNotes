@@ -1,0 +1,2 @@
+# MyGitNotes
+Tips for github
